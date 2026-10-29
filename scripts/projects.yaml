@@ -1,0 +1,53 @@
+# Single source for the copy and metrics drawn into the README graphics; edit here, then run `python scripts/build.py`.
+# Every metric below was checked against the linked repo (or, for Rebel Hive, the private project outputs) on 2026-10-29.
+
+hero:
+  eyebrow: "DATA SCIENTIST · ML ENGINEER"
+  name: "Bright Uzosike"
+  line: "I build ML systems that ship: evaluated, explainable, deployed."
+  meta: "MSc Data Science · Manchester, UK"
+  stages: ["data", "features", "models", "eval", "serve"]
+
+cards:
+  - slug: alloytower
+    repo: https://github.com/michizler/alloy-tower-data-platform
+    kicker: "PROPERTY VALUATION"
+    status: "LIVE"
+    title: "AlloyTower AVM"
+    problem: "Values a property through a live API and explains every estimate with SHAP."
+    metric: "8.5%"
+    metric_label: ["MAPE with an assessment,", "44.9% without (5-fold CV)"]
+    chips: ["LightGBM", "SHAP", "FastAPI", "Docker"]
+
+  - slug: rebelhive
+    repo: null   # client work, private repo
+    kicker: "CLIENT NLP TOOL"
+    status: "IN USE"
+    title: "Rebel Hive diagnostic"
+    problem: "Measures the gap between how colleges describe themselves and how Ofsted describes them."
+    metric: "0.82"
+    metric_label: ["macro-F1, 5-fold stratified CV,", "24 Ofsted inspection reports"]
+    chips: ["spaCy", "scikit-learn", "SHAP", "Claude API"]
+
+  - slug: llm-feedback
+    repo: https://github.com/michizler/data-science-projects/tree/master/llm-feedback-analyzer
+    kicker: "LLM ENGINEERING"
+    title: "LLM Feedback Analyzer"
+    problem: "Turns customer feedback into schema-validated JSON, and falls back safely when the model fails."
+    metric: "13/15"
+    metric_label: ["correct on a 15-review gold set,", "for sentiment and for churn risk"]
+    chips: ["Claude Haiku 4.5", "Pydantic", "Python"]
+
+  - slug: voyagerail
+    repo: https://github.com/michizler/voyage-rails-analytics
+    kicker: "DYNAMIC PRICING"
+    title: "VoyageRail pricing"
+    problem: "Predicts rail ticket prices from demand, booking time and capacity, served as two containers."
+    metric: "0.97"
+    metric_label: ["R² on holdout (Random Forest),", "vs 0.77 linear baseline"]
+    chips: ["scikit-learn", "MLflow", "FastAPI", "Docker Compose"]
+
+footer:
+  - {slug: email, icon: mail, label: "Email", href: "mailto:michizler@gmail.com"}
+  - {slug: linkedin, icon: linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/bright-uzosike"}
+  - {slug: portfolio, icon: folder, label: "Portfolio", href: "https://github.com/michizler/data-science-projects"}
