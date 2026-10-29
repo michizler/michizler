@@ -9,7 +9,7 @@ I'm a data scientist and ML engineer in Manchester. I take models past the noteb
 
 **Now:** Research Data Scientist at Rebel Hive (sole data scientist on a client NLP tool) and AI Data Specialist (RLHF & SFT) at Mercor, reviewing model outputs for frontier training.<br>
 **Background:** MSc Data Science with Distinction, University of Salford (2026) · BEng Electronic & Computer Engineering, First Class equivalent.<br>
-**Looking for:** graduate and junior data science or ML engineering roles in the UK.
+**Looking for:** Data science or ML engineering roles in the UK.
 
 ## Featured systems
 
