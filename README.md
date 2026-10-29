@@ -5,10 +5,14 @@
   <img alt="Bright Uzosike, Data Scientist and ML Engineer. I build ship, and maintain ML systems that exceed evaluation expectations, are explainable, and add measurable business value." src="assets/hero-light.svg" width="100%">
 </picture>
 
-I'm a data scientist and ML engineer in Manchester. I take models past the notebook: tested on data they haven't seen, explained prediction by prediction, and served behind typed APIs.
+I'm a data scientist and ML engineer in Manchester. I build models that businesses can price, plan and make decisions with. I test them on data they haven't seen, explain every prediction, and ship them as services other teams can call.
+
+**What I build:** Pricing and risk models (dynamic pricing, property valuation, customer churn), served behind typed APIs, containerised and deployed.
 
 **Now:** Research Data Scientist at Rebel Hive (sole data scientist on a client NLP tool) and AI Data Specialist (RLHF & SFT) at Mercor, reviewing model outputs for frontier training.<br>
+
 **Background:** MSc Data Science with Distinction, University of Salford (2026) · BEng Electronic & Computer Engineering, First Class equivalent.<br>
+
 **Looking for:** Data science or ML engineering roles in the UK.
 
 ## Featured systems
