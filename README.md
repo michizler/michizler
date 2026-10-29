@@ -60,11 +60,13 @@ flowchart LR
 
 | Area | Tools |
 | --- | --- |
-| **ML & stats** | Python · scikit-learn · LightGBM · SHAP · R (forecast, rugarch) |
-| **LLMs & evaluation** | Claude API · Pydantic schemas · retries with backoff · gold-set evaluation |
-| **Data & SQL** | pandas · NumPy · SQL Server (T-SQL) · Spark SQL · PySpark · Databricks |
-| **Serving & MLOps** | FastAPI · Streamlit · Docker · Docker Compose · MLflow · Render |
-| **BI** | Power BI (DAX) · Altair · React + Vite |
+| **Languages** | Python · SQL (T-SQL, PostgreSQL, BigQuery, Spark SQL) · R · JavaScript · C · Bash |
+| **Software engineering** | FastAPI · Flask · REST API design · Pydantic · SQLAlchemy · React + Vite · HTML & CSS · Streamlit · Git & GitHub · Linux |
+| **Data science & ML** | pandas · NumPy · scikit-learn · statsmodels · SciPy · XGBoost · LightGBM · SHAP · spaCy · Hugging Face Transformers · R (dplyr, ggplot2, caret, forecast, rugarch) |
+| **LLMs & evaluation** | Claude API · schema-validated outputs · retries with backoff · RAG · agentic workflows · gold-set evaluation · RLHF & SFT |
+| **Data engineering** | ETL/ELT · Azure Data Factory · Informatica DEI · Databricks (Spark, MLlib, Unity Catalog) · Microsoft Fabric · BigQuery · SQL Server · PostgreSQL · MySQL |
+| **MLOps & cloud** | Docker · Docker Compose · Kubernetes · MLflow · Prometheus · CI/CD · Render · Azure ML · GCP · AWS (EC2, S3) |
+| **BI & analytics** | Power BI (DAX, Power Query) · Tableau · Excel · Altair · Power Apps · Power Automate · A/B testing · time series forecasting |
 
 ## More work
 
