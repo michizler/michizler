@@ -15,7 +15,7 @@ cards:
     status: "LIVE"
     title: "AlloyTower AVM"
     problem: "Values a property through a live API and explains every estimate with SHAP."
-    metric: "8.5%"
+    metric: "8.0%"
     metric_label: ["MAPE with an assessment,", "44.9% without (5-fold CV)"]
     chips: ["LightGBM", "SHAP", "FastAPI", "Docker"]
 
