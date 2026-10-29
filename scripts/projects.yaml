@@ -51,3 +51,127 @@ footer:
   - {slug: email, icon: mail, label: "Email", href: "mailto:michizler@gmail.com"}
   - {slug: linkedin, icon: linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/bright-uzosike"}
   - {slug: portfolio, icon: folder, label: "Portfolio", href: "https://github.com/michizler/data-science-projects"}
+
+# ---------- Toolkit graphics ----------
+# icon: a Simple Icons slug (vendored in scripts/icons). mono: letters for brands Simple Icons doesn't carry.
+# Neither: a practice rather than a product, drawn with an accent dot.
+icon_style: mono   # mono = icons in text colour; brand = brand colours where they keep 3:1 contrast
+
+tools:
+  Python: {icon: python}
+  SQL: {}
+  R: {icon: r}
+  JavaScript: {icon: javascript}
+  C: {icon: c}
+  Bash: {icon: gnubash}
+  FastAPI: {icon: fastapi}
+  Flask: {icon: flask}
+  Pydantic: {icon: pydantic}
+  SQLAlchemy: {mono: SA}
+  React: {icon: react}
+  Vite: {icon: vite}
+  HTML: {icon: html5}
+  CSS: {icon: css}
+  Streamlit: {icon: streamlit}
+  Git: {icon: git}
+  GitHub: {icon: github}
+  Linux: {icon: linux}
+  REST API design: {}
+  pandas: {icon: pandas}
+  NumPy: {icon: numpy}
+  scikit-learn: {icon: scikitlearn}
+  statsmodels: {mono: SM}
+  SciPy: {icon: scipy}
+  XGBoost: {mono: XG}
+  LightGBM: {mono: LG}
+  SHAP: {mono: SH}
+  spaCy: {mono: sp}
+  Hugging Face: {icon: huggingface}
+  Jupyter: {icon: jupyter}
+  tidyverse: {icon: tidyverse}
+  caret, forecast, rugarch: {}
+  forecast: {}
+  rugarch: {}
+  Claude API: {icon: claude}
+  Structured outputs: {}
+  Retries and backoff: {}
+  RAG: {}
+  Agentic workflows: {}
+  Gold-set evaluation: {}
+  RLHF & SFT: {}
+  ETL/ELT: {}
+  Azure Data Factory: {mono: DF}
+  Informatica DEI: {mono: IN}
+  Databricks: {icon: databricks}
+  Spark & PySpark: {icon: apachespark}
+  PySpark: {icon: apachespark}
+  Spark SQL: {icon: apachespark}
+  MLlib: {}
+  Microsoft Fabric: {mono: FB}
+  BigQuery: {icon: googlebigquery}
+  SQL Server: {mono: SQL}
+  T-SQL: {}
+  PostgreSQL: {icon: postgresql}
+  MySQL: {mono: My}
+  Docker: {icon: docker}
+  Docker Compose: {icon: docker}
+  Kubernetes: {icon: kubernetes}
+  MLflow: {icon: mlflow}
+  Prometheus: {icon: prometheus}
+  CI/CD: {}
+  Render: {icon: render}
+  Azure ML: {mono: AZ}
+  Google Cloud: {icon: googlecloud}
+  AWS: {mono: AWS}
+  Power BI: {mono: BI}
+  DAX: {}
+  Tableau: {mono: TB}
+  Excel: {mono: XL}
+  Altair: {mono: AL}
+  Power Apps: {mono: PA}
+  Power Automate: {mono: PW}
+  A/B testing: {}
+  Time series forecasting: {}
+  Hypothesis testing: {}
+
+toolkit:
+  - {slug: languages, group: "Languages", items: [Python, SQL, R, JavaScript, C, Bash]}
+  - {slug: software, group: "Software engineering", items: [FastAPI, Flask, Pydantic, SQLAlchemy, React, Vite, HTML, CSS, Streamlit, Git, GitHub, Linux, REST API design]}
+  - {slug: datascience, group: "Data science & ML", items: [pandas, NumPy, scikit-learn, statsmodels, SciPy, XGBoost, LightGBM, SHAP, spaCy, Hugging Face, Jupyter, tidyverse, "caret, forecast, rugarch"]}
+  - {slug: llm, group: "LLMs & evaluation", items: [Claude API, Structured outputs, Retries and backoff, RAG, Agentic workflows, Gold-set evaluation, RLHF & SFT]}
+  - {slug: dataeng, group: "Data engineering", items: [Azure Data Factory, Informatica DEI, Databricks, Spark & PySpark, Microsoft Fabric, BigQuery, SQL Server, PostgreSQL, MySQL, ETL/ELT]}
+  - {slug: mlops, group: "MLOps & cloud", items: [Docker, Docker Compose, Kubernetes, MLflow, Prometheus, Render, Azure ML, Google Cloud, AWS, CI/CD]}
+  - {slug: bi, group: "BI & analytics", items: [Power BI, Tableau, Excel, Altair, Power Apps, Power Automate, A/B testing, Time series forecasting]}
+
+# "More work" rows: one linked graphic per project
+more_work:
+  - slug: usb
+    title: "US Bancorp volatility"
+    repo: https://github.com/michizler/usb-stock-timeseries-model
+    text: "Holt-Winters and ARIMA failed Ljung-Box. ARIMA(1,0,1) + sGARCH(1,1) passed (p = 0.2369) and gives a 365-day price and volatility forecast from 11,835 daily prices."
+    items: [R, forecast, rugarch]
+  - slug: strataforge
+    title: "StrataForge"
+    repo: https://github.com/michizler/strataforge-prediction
+    text: "Multiple regression for concrete strength (R² 81.35%, all five assumptions tested), turned into a worked £21,600 saving on a 2,000 m³ project."
+    items: [R, Hypothesis testing]
+  - slug: reder
+    title: "Reder churn"
+    repo: https://github.com/michizler/reder-analytics
+    text: "Flattens nine nested JSON columns into a 12,483 × 55 table, adds RFM features, selects by mutual information and serves the model through FastAPI."
+    items: [Python, scikit-learn, FastAPI]
+  - slug: databricks
+    title: "Databricks big data"
+    repo: https://github.com/michizler/data-science-projects/tree/master/databricks-bigdata-analytics
+    text: "Spark SQL over 572,935 clinical trial records, and an ALS game recommender tuned by grid search and tracked in MLflow."
+    items: [Databricks, PySpark, Spark SQL, MLlib, MLflow]
+  - slug: sql
+    title: "SQL Server design"
+    repo: https://github.com/michizler/sql-database-projects
+    text: "A 9-table 3NF banking database with salted password hashes, procedures and triggers, plus NHS prescribing analysis with window functions and z-score outliers."
+    items: [SQL Server, T-SQL]
+  - slug: imf
+    title: "IMF global economy"
+    repo: https://github.com/michizler/imf-globaleconomy-analytics
+    text: "A Power BI star schema over 180+ countries and 44 IMF indicators from 2001 to 2020, with custom DAX."
+    items: [Power BI, DAX]

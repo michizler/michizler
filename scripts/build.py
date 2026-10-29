@@ -2,6 +2,9 @@
 from __future__ import annotations
 
 import argparse
+import json
+import re
+import urllib.request
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -324,6 +327,133 @@ def card(c: dict, t: dict) -> str:
     return doc.render(w, h, card_alt(c), "".join(parts))
 
 
+# ---------- Toolkit and stack chips ----------
+
+ICONS_DIR = ROOT / "scripts" / "icons"
+SIMPLE_ICONS = "https://cdn.jsdelivr.net/npm/simple-icons@16.30.0/icons/{}.svg"
+SIMPLE_ICONS_DATA = "https://cdn.jsdelivr.net/npm/simple-icons@16.30.0/data/simple-icons.json"
+
+
+def _fetch(url: str) -> bytes:
+    with urllib.request.urlopen(url, timeout=30) as r:
+        return r.read()
+
+
+def icon_path(slug: str) -> str:
+    """The 24x24 path data for a Simple Icons slug, downloaded once and vendored in scripts/icons."""
+    f = ICONS_DIR / f"{slug}.svg"
+    if not f.exists():
+        ICONS_DIR.mkdir(parents=True, exist_ok=True)
+        f.write_bytes(_fetch(SIMPLE_ICONS.format(slug)))
+    return re.search(r'<path d="([^"]+)"', f.read_text(encoding="utf-8")).group(1)
+
+
+def brand_hex(slug: str) -> str:
+    f = ICONS_DIR / "_colours.json"
+    if not f.exists():
+        data = json.loads(_fetch(SIMPLE_ICONS_DATA))
+        f.write_text(json.dumps({i["slug"]: i["hex"] for i in data}, indent=0, sort_keys=True), encoding="utf-8")
+    return "#" + json.loads(f.read_text(encoding="utf-8"))[slug]
+
+
+def contrast(a: str, b: str) -> float:
+    def lum(h: str) -> float:
+        rgb = [int(h[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+        rgb = [c / 12.92 if c <= .03928 else ((c + .055) / 1.055) ** 2.4 for c in rgb]
+        return .2126 * rgb[0] + .7152 * rgb[1] + .0722 * rgb[2]
+    hi, lo = sorted((lum(a), lum(b)), reverse=True)
+    return (hi + .05) / (lo + .05)
+
+
+def tool_mark(doc: Doc, spec: dict, x: float, y: float, s: float, ground: str, style: str) -> str:
+    """The 's'-sized mark at (x, y): a brand icon, a lettered badge, or an accent dot for a practice."""
+    t = doc.t
+    if "icon" in spec:
+        fill = t["text"]
+        if style == "brand":
+            hexc = brand_hex(spec["icon"])
+            fill = hexc if contrast(hexc, ground) >= 3 else t["text"]
+        return f'<path transform="translate({num(x)} {num(y)}) scale({sig(s / 24)})" fill="{fill}" d="{icon_path(spec["icon"])}"/>'
+    if "mono" in spec:
+        letters = spec["mono"]
+        size = s * (.42 if len(letters) <= 2 else .34)
+        return (f'<rect x="{num(x + .5)}" y="{num(y + .5)}" width="{num(s - 1)}" height="{num(s - 1)}" rx="{num(s * .25)}" '
+                f'fill="none" stroke="{t["muted"]}"/>'
+                + MONO.text(doc, letters, x + s / 2, y + s / 2 + size * .36, size, t["text"], anchor="middle"))
+    r = s * .2
+    return f'<circle cx="{num(x + s / 2)}" cy="{num(y + s / 2)}" r="{num(r)}" fill="{doc.gradient(x + s / 2 - r, x + s / 2 + r)}"/>'
+
+
+def flow_tiles(doc: Doc, names: list[str], tools: dict, x0: float, x1: float, y0: float, *, h: float,
+               font: float, icon: float, ground: str, fill: str, style: str) -> tuple[str, float]:
+    """Lays tiles left to right, wrapping at x1; returns the markup and the bottom edge."""
+    t, out = doc.t, []
+    gap, pad_l, pad_r, inner = 8, (h - icon) / 2 + 1, 12, 8
+    x, y = x0, y0
+    for name in names:
+        spec = tools[name]
+        tw = pad_l + icon + inner + SANS.width(name, font) + pad_r
+        if x > x0 and x + tw > x1:
+            x, y = x0, y + h + gap
+        assert tw <= x1 - x0, f"tile {name!r} wider than its row"
+        out.append(f'<rect x="{num(x + .5)}" y="{num(y + .5)}" width="{num(tw - 1)}" height="{num(h - 1)}" rx="8" '
+                   f'fill="{fill}" stroke="{t["border"]}"/>')
+        out.append(tool_mark(doc, spec, x + pad_l, y + (h - icon) / 2, icon, ground, style))
+        out.append(SANS.text(doc, name, x + pad_l + icon + inner, y + h / 2 + font * .36, font, t["text"]))
+        x += tw + gap
+    return "".join(out), y + h
+
+
+def toolkit_group(g: dict, tools: dict, style: str, t: dict, compact: bool = False) -> str:
+    doc = Doc(t)
+    if compact:
+        w, pad = 480, 18
+        tiles, bottom = flow_tiles(doc, g["items"], tools, pad, w - pad, pad + 30, h=36, font=15, icon=18,
+                                   ground=t["page"], fill=t["page"], style=style)
+        label = (f'<rect x="{pad}" y="{pad + 3}" width="3" height="16" rx="1.5" fill="{doc.gradient(pad, pad + 3)}"/>'
+                 + BOLD.text(doc, g["group"], pad + 11, pad + 16, 16, t["text"]))
+    else:
+        w, pad, label_w = 880, 18, 196
+        tiles, bottom = flow_tiles(doc, g["items"], tools, pad + label_w, w - pad, pad, h=32, font=13, icon=16,
+                                   ground=t["page"], fill=t["page"], style=style)
+        label = (f'<rect x="{pad + 4}" y="{pad + 8}" width="3" height="16" rx="1.5" fill="{doc.gradient(pad + 4, pad + 7)}"/>'
+                 + BOLD.text(doc, g["group"], pad + 16, pad + 21, 14, t["text"]))
+    h = round(bottom + pad)
+    body = (f'<rect x=".5" y=".5" width="{w - 1}" height="{h - 1}" rx="12" fill="{t["surface"]}" stroke="{t["border"]}"/>'
+            + label + tiles)
+    return doc.render(w, h, f'{g["group"]}: {", ".join(g["items"])}', body)
+
+
+def work_row(p: dict, tools: dict, style: str, t: dict, compact: bool = False) -> str:
+    """One 'More work' project: linked title, the finding in plain words, and its stack as icon chips."""
+    doc = Doc(t)
+    if compact:
+        w, pad, font, lh = 480, 20, 15, 22
+        title_y = pad + 18
+        lines = SANS.wrap(p["text"], font, w - 2 * pad)
+        text_bottom = title_y + 12 + len(lines) * lh
+        tiles, bottom = flow_tiles(doc, p["items"], tools, pad, w - pad, text_bottom + 6, h=30, font=13, icon=15,
+                                   ground=t["page"], fill=t["page"], style=style)
+        title_size, text_x, text_y0 = 17, pad, title_y + 12 + font
+    else:
+        w, pad, font, lh, split = 880, 20, 13, 19, 560
+        title_y = pad + 16
+        lines = SANS.wrap(p["text"], font, split - pad - 24)
+        text_bottom = title_y + 8 + len(lines) * lh
+        tiles, bottom = flow_tiles(doc, p["items"], tools, split, w - pad, pad, h=28, font=12, icon=14,
+                                   ground=t["page"], fill=t["page"], style=style)
+        title_size, text_x, text_y0 = 15, pad, title_y + 10 + font
+    assert len(lines) <= 3 or compact, f'{p["slug"]}: description wraps to {len(lines)} lines'
+    h = round(max(text_bottom, bottom) + pad)
+    title_w = BOLD.width(p["title"], title_size, tracking=-0.2)
+    body = (f'<rect x=".5" y=".5" width="{w - 1}" height="{h - 1}" rx="12" fill="{t["surface"]}" stroke="{t["border"]}"/>'
+            + BOLD.text(doc, p["title"], pad, title_y, title_size, t["text"], tracking=-0.2)
+            + arrow(pad + title_w + 7, title_y - title_size * .62, title_size * .5, t["muted"])
+            + "".join(SANS.text(doc, s, text_x, text_y0 + i * lh, font, t["muted"]) for i, s in enumerate(lines))
+            + tiles)
+    return doc.render(w, h, f'{p["title"]}: {p["text"]} Stack: {", ".join(p["items"])}.', body)
+
+
 # ---------- Footer links ----------
 
 ICONS = {
@@ -348,16 +478,28 @@ def footer_link(link: dict, t: dict) -> str:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--only", help="comma-separated: hero, footer, and/or card slugs")
+    ap.add_argument("--only", help="comma-separated: hero, footer, toolkit, work and/or card slugs")
+    ap.add_argument("--icon-style", choices=["mono", "brand"], help="override icon_style in projects.yaml")
     args = ap.parse_args()
     cfg = yaml.safe_load((ROOT / "scripts" / "projects.yaml").read_text(encoding="utf-8"))
     only = set(args.only.split(",")) if args.only else None
+    tools, style = cfg["tools"], args.icon_style or cfg.get("icon_style", "mono")
+    for name in [n for g in cfg["toolkit"] + cfg["more_work"] for n in g["items"]]:
+        assert name in tools, f"{name!r} is used but missing from tools:"
     jobs = []
     if not only or "hero" in only:
         jobs += [(f"hero-{{m}}.svg", hero, cfg["hero"]), (f"hero-compact-{{m}}.svg", hero_compact, cfg["hero"])]
     jobs += [(f'cards/{c["slug"]}-{{m}}.svg', card, c) for c in cfg["cards"] if not only or c["slug"] in only]
     if not only or "footer" in only:
         jobs += [(f'footer/{f["slug"]}-{{m}}.svg', footer_link, f) for f in cfg["footer"]]
+    if not only or "toolkit" in only:
+        for g in cfg["toolkit"]:
+            jobs.append((f'toolkit/{g["slug"]}-{{m}}.svg', lambda d, t: toolkit_group(d, tools, style, t), g))
+            jobs.append((f'toolkit/{g["slug"]}-compact-{{m}}.svg', lambda d, t: toolkit_group(d, tools, style, t, True), g))
+    if not only or "work" in only:
+        for p in cfg["more_work"]:
+            jobs.append((f'work/{p["slug"]}-{{m}}.svg', lambda d, t: work_row(d, tools, style, t), p))
+            jobs.append((f'work/{p["slug"]}-compact-{{m}}.svg', lambda d, t: work_row(d, tools, style, t, True), p))
     for pattern, fn, data in jobs:
         for mode, t in THEMES.items():
             p = ASSETS / pattern.format(m=mode)
