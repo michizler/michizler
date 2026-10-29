@@ -2,7 +2,7 @@
   <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="assets/hero-compact-dark.svg">
   <source media="(max-width: 600px)" srcset="assets/hero-compact-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-  <img alt="Bright Uzosike, Data Scientist and ML Engineer. I build ship, and maintain ML systems that exceed evaluation expectations, are explainable, and add measurable business value." src="assets/hero-light.svg" width="100%">
+  <img alt="Bright Uzosike, Data Scientist and ML Engineer. I build, ship and maintain explainable ML that adds business value." src="assets/hero-light.svg" width="100%">
 </picture>
 
 I'm a data scientist and ML engineer in Manchester. I build models that businesses can price, plan and make decisions with. I test them on data they haven't seen, explain every prediction, and ship them as services other teams can call.
