@@ -42,7 +42,7 @@ cards:
     repo: https://github.com/michizler/voyage-rails-analytics
     kicker: "DYNAMIC PRICING"
     title: "VoyageRail pricing"
-    problem: "Quotes rail fares from what a clerk knows at quote time, rebuilt after I found leaked features."
+    problem: "Quotes rail fares from what a clerk knows at quote time and explains every price."
     metric: "0.90"
     metric_label: ["R² on holdout (gradient boosting),", "vs 0.71 linear baseline"]
     chips: ["scikit-learn", "SHAP", "FastAPI", "Docker Compose"]

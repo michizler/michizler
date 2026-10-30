@@ -11,7 +11,7 @@ I'm a data scientist and ML engineer in Manchester. I build models that business
 
 **Now:** Research Data Scientist at Rebel Hive (sole data scientist on a client NLP tool) and AI Data Specialist (RLHF & SFT) at Mercor, reviewing model outputs for frontier training.<br>
 
-**Background:** MSc Data Science with Distinction, University of Salford (2026) · BEng Electronic Engineering, First Class equivalent.<br>
+**Background:** MSc Data Science with Distinction, University of Salford (2026) · BEng Electronic Engineering, Second Class Upper.<br>
 
 **Looking for:** Data science or ML engineering roles in the UK.
 
@@ -21,7 +21,7 @@ I'm a data scientist and ML engineer in Manchester. I build models that business
   <a href="https://github.com/michizler/alloy-tower-data-platform"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/alloytower-dark.svg"><img alt="AlloyTower AVM: values a property through a live API and explains every estimate with SHAP. 8.0% MAPE with an assessment, 44.9% without (5-fold CV). LightGBM, SHAP, FastAPI, Docker." src="assets/cards/alloytower-light.svg" width="390"></picture></a>
   <picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/rebelhive-dark.svg"><img alt="Rebel Hive diagnostic, a client NLP tool in use: measures the gap between how colleges describe themselves and how Ofsted describes them. Macro-F1 0.82, 5-fold stratified CV on 24 Ofsted inspection reports. spaCy, scikit-learn, SHAP, Claude API." src="assets/cards/rebelhive-light.svg" width="390"></picture>
   <a href="https://github.com/michizler/data-science-projects/tree/master/llm-feedback-analyzer"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/llm-feedback-dark.svg"><img alt="LLM Feedback Analyzer: turns customer feedback into schema-validated JSON, and falls back safely when the model fails. 13 of 15 correct on a 15-review gold set, for sentiment and for churn risk. Claude Haiku 4.5, Pydantic, Python." src="assets/cards/llm-feedback-light.svg" width="390"></picture></a>
-  <a href="https://github.com/michizler/voyage-rails-analytics"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/voyagerail-dark.svg"><img alt="VoyageRail pricing: quotes rail fares from what a clerk knows at quote time, rebuilt after leaked features were found. R squared 0.90 on holdout with gradient boosting, against a 0.71 linear baseline. scikit-learn, SHAP, FastAPI, Docker Compose." src="assets/cards/voyagerail-light.svg" width="390"></picture></a>
+  <a href="https://github.com/michizler/voyage-rails-analytics"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/voyagerail-dark.svg"><img alt="VoyageRail pricing: quotes rail fares from what a clerk knows at quote time and explains every price. R squared 0.90 on holdout with gradient boosting, against a 0.71 linear baseline. scikit-learn, SHAP, FastAPI, Docker Compose." src="assets/cards/voyagerail-light.svg" width="390"></picture></a>
 </p>
 
 <p align="center"><sub>
