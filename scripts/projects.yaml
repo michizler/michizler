@@ -69,6 +69,7 @@ tools:
   Pydantic: {icon: pydantic}
   SQLAlchemy: {mono: SA}
   React: {icon: react}
+  Next.js: {icon: nextdotjs}
   Vite: {icon: vite}
   HTML: {icon: html5}
   CSS: {icon: css}
@@ -136,7 +137,7 @@ tools:
 
 toolkit:
   - {slug: languages, group: "Languages", items: [Python, SQL, R, JavaScript, C, Bash]}
-  - {slug: software, group: "Software engineering", items: [FastAPI, Flask, Pydantic, SQLAlchemy, React, Vite, HTML, CSS, Streamlit, Git, GitHub, Linux, REST API design]}
+  - {slug: software, group: "Software engineering", items: [FastAPI, Flask, Pydantic, SQLAlchemy, React, Next.js, Vite, HTML, CSS, Streamlit, Git, GitHub, Linux, REST API design]}
   - {slug: datascience, group: "Data science & ML", items: [pandas, NumPy, scikit-learn, statsmodels, SciPy, XGBoost, LightGBM, SHAP, spaCy, Hugging Face, Jupyter, tidyverse, "caret, forecast, rugarch"]}
   - {slug: llm, group: "LLMs & evaluation", items: [Claude API, Structured outputs, Retries and backoff, RAG, Agentic workflows, Gold-set evaluation, RLHF & SFT]}
   - {slug: dataeng, group: "Data engineering", items: [Azure Data Factory, Informatica DEI, Databricks, Spark & PySpark, Microsoft Fabric, BigQuery, SQL Server, PostgreSQL, MySQL, ETL/ELT]}
