@@ -1,0 +1,3 @@
+# Files git should never track in the profile repo.
+__pycache__/
+*.pyc

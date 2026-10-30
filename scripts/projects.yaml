@@ -4,7 +4,7 @@
 hero:
   eyebrow: "DATA SCIENTIST · ML ENGINEER"
   name: "Bright Uzosike"
-  line: "I build, ship and maintain explainable ML that adds business value."
+  line: "I build, ship and maintain explainable ML systems that add business value."
   meta: "MSc Data Science · Manchester, UK"
   stages: ["data", "features", "models", "eval", "serve"]
 

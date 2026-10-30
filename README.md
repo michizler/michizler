@@ -2,7 +2,7 @@
   <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="assets/hero-compact-dark.svg">
   <source media="(max-width: 600px)" srcset="assets/hero-compact-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-  <img alt="Bright Uzosike, Data Scientist and ML Engineer. I build, ship and maintain explainable ML that adds business value." src="assets/hero-light.svg" width="100%">
+  <img alt="Bright Uzosike, Data Scientist and ML Engineer. I build, ship and maintain explainable ML systems that add business value." src="assets/hero-light.svg" width="100%">
 </picture>
 
 I'm a data scientist and ML engineer in Manchester. I build models that businesses can price, plan and make decisions with. I test them on data they haven't seen, explain every prediction, and ship them as services other teams can call.
@@ -25,7 +25,7 @@ I'm a data scientist and ML engineer in Manchester. I build models that business
 </p>
 
 <p align="center"><sub>
-  Try AlloyTower live: <a href="https://alloy-avm.streamlit.app/">app</a> · <a href="https://alloytower-avm-api.onrender.com/docs">API docs</a>. The free-tier API can take about 40 seconds to wake.<br>
+  Try AlloyTower live with the <a href="https://alloy-avm.streamlit.app/">app</a> or the <a href="https://alloytower-avm-api.onrender.com/docs">API docs</a>. The free-tier API can take about 40 seconds to wake.<br>
   Rebel Hive is client work, so its code is private.
 </sub></p>
 

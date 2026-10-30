@@ -237,7 +237,7 @@ def hero(cfg: dict, t: dict) -> str:
     doc = Doc(t)
     w, h, pad = 1200, 320, 64
     graph_x0, graph_x1 = 790, 1120
-    line_size = 20
+    line_size = 18
     assert SANS.width(cfg["line"], line_size) < graph_x0 - 80 - pad, "positioning line runs into the graph"
     graph, style = pipeline_graph(doc, graph_x0, graph_x1, 158, cfg["stages"])
     doc.defs.append(f'<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">'
