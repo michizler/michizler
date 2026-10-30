@@ -48,6 +48,7 @@ cards:
     chips: ["scikit-learn", "SHAP", "FastAPI", "Docker Compose"]
 
 footer:
+  - {slug: website, icon: globe, label: "brightuzosike.dev", href: "https://brightuzosike.dev"}
   - {slug: email, icon: mail, label: "Email", href: "mailto:michizler@gmail.com"}
   - {slug: linkedin, icon: linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/bright-uzosike"}
   - {slug: portfolio, icon: folder, label: "Portfolio", href: "https://github.com/michizler/data-science-projects"}

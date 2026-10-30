@@ -88,6 +88,7 @@ flowchart LR
 <br>
 
 <p align="center">
+  <a href="https://brightuzosike.dev"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/footer/website-dark.svg"><img alt="Website: brightuzosike.dev" src="assets/footer/website-light.svg" width="163" height="36"></picture></a>
   <a href="mailto:michizler@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/footer/email-dark.svg"><img alt="Email" src="assets/footer/email-light.svg" width="87" height="36"></picture></a>
   <a href="https://www.linkedin.com/in/bright-uzosike"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/footer/linkedin-dark.svg"><img alt="LinkedIn" src="assets/footer/linkedin-light.svg" width="106" height="36"></picture></a>
   <a href="https://github.com/michizler/data-science-projects"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/footer/portfolio-dark.svg"><img alt="Portfolio" src="assets/footer/portfolio-light.svg" width="105" height="36"></picture></a>
