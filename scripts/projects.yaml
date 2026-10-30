@@ -42,10 +42,10 @@ cards:
     repo: https://github.com/michizler/voyage-rails-analytics
     kicker: "DYNAMIC PRICING"
     title: "VoyageRail pricing"
-    problem: "Predicts rail ticket prices from demand, booking time and capacity, served as two containers."
-    metric: "0.97"
-    metric_label: ["R² on holdout (Random Forest),", "vs 0.77 linear baseline"]
-    chips: ["scikit-learn", "MLflow", "FastAPI", "Docker Compose"]
+    problem: "Quotes rail fares from what a clerk knows at quote time, rebuilt after I found leaked features."
+    metric: "0.90"
+    metric_label: ["R² on holdout (gradient boosting),", "vs 0.71 linear baseline"]
+    chips: ["scikit-learn", "SHAP", "FastAPI", "Docker Compose"]
 
 footer:
   - {slug: email, icon: mail, label: "Email", href: "mailto:michizler@gmail.com"}
